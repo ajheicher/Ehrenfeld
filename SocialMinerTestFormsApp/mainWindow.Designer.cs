@@ -52,7 +52,7 @@
             this.output.Multiline = true;
             this.output.Name = "output";
             this.output.ReadOnly = true;
-            this.output.Size = new System.Drawing.Size(800, 272);
+            this.output.Size = new System.Drawing.Size(800, 327);
             this.output.TabIndex = 0;
             this.output.TextChanged += new System.EventHandler(this.output_TextChanged);
             // 
