@@ -33,6 +33,7 @@ namespace SocialMinerTestFormsApp
         {
             socialMinerCredentials = sm;
             scID = id;
+            //timezone problems?
             publishedDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
             refURL = "http://10.171.1.100/ccp-webapp/ccp/socialcontact/" + scID;
@@ -53,6 +54,7 @@ namespace SocialMinerTestFormsApp
             //Add auth header
             httpWebRequest.Headers.Add("Authorization", "Basic " + socialMinerCredentials);
 
+            //Make web request
             using (HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
@@ -60,6 +62,8 @@ namespace SocialMinerTestFormsApp
                 raw = reader.ReadToEnd();
 
             }
+            //Parse XML using XML reader
+            //TODO: expand LINQ -> XML
             using (XmlReader reader = XmlReader.Create(new StringReader(raw)))
             {
                 //TODO: Add exception handling and bad response handling
@@ -74,9 +78,8 @@ namespace SocialMinerTestFormsApp
                         
                         if (reader.Name == "createdDate")
                         {
-                            //Console.WriteLine(reader.Name);
-                            //Console.WriteLine(reader.Value);
-                            //publishedDate = publishedDate.AddMilliseconds(Double.Parse(reader.Value)).ToLocalTime();
+                            XElement element = XNode.ReadFrom(reader) as XElement;
+                            publishedDate = publishedDate.AddMilliseconds(Double.Parse(element.Value)).ToLocalTime();
                         }
                         if (reader.Name == "extensionFields")
                         {
@@ -142,7 +145,7 @@ namespace SocialMinerTestFormsApp
                         if (reader.Name == "status")
                         {
                             Console.WriteLine(reader.Name);
-                            status = (scSocialContactStatus)1;
+                            status = (scSocialContactStatus)3;
                         }
                     }
                 }
@@ -172,6 +175,7 @@ namespace SocialMinerTestFormsApp
             //Add auth header
             httpWebRequest.Headers.Add("Authorization", "Basic " + socialMinerCredentials);
 
+            //TODO: Exception handling here
             using (HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))

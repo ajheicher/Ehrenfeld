@@ -17,7 +17,7 @@ namespace SocialMinerTestFormsApp
         public mainWindow(string html, string sm)
         {
             InitializeComponent();
-            output.Text = html;
+            outputStatic.Text = html;
             socialMinerCredentials = sm;
         }
 
@@ -33,7 +33,7 @@ namespace SocialMinerTestFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            output.Text = "";
+            transcriptOutput.Text = "";
             sc = new SocialContact(socialMinerCredentials, socialContactIdTextBox.Text);
 
             agentNameTextBox.Text = sc.solicitor;
@@ -47,8 +47,8 @@ namespace SocialMinerTestFormsApp
 
             foreach (TranscriptEntry n in sc.transcript)
             {
-                output.AppendText(n.toString());
-                output.AppendText(Environment.NewLine);
+                transcriptOutput.AppendText(n.toString());
+                transcriptOutput.AppendText(Environment.NewLine);
 
                
 
@@ -62,6 +62,11 @@ namespace SocialMinerTestFormsApp
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }

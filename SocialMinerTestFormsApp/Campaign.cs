@@ -13,7 +13,7 @@ namespace SocialMinerTestFormsApp
     {
         public string campaignName { get; }
         public string campaignRefURL { get; }
-        public string campaignTotalCount { get; }
+        public int campaignTotalCount { get; }
         public string rawXML { get; }
 
         public string socialMinerCredentials;
@@ -26,7 +26,10 @@ namespace SocialMinerTestFormsApp
             socialMinerCredentials = sm;
             campaignRefURL = refURL;
             rawXML = getRawCampaignXML();
+            campaignTotalCount = countTotalCampaignChats();
             output = parseCampsignXML(rawXML);
+            output.Append("Total Chats Across Campaign: " + campaignTotalCount);
+            
         }
 
         public string getRawCampaignXML()
@@ -67,5 +70,30 @@ namespace SocialMinerTestFormsApp
                 return builtString;
             }
         }
+
+        private int countTotalCampaignChats()
+        {
+            //create WebRequest
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(campaignRefURL + "count");
+
+            //Request method
+            httpWebRequest.Method = "GET";
+
+            //Add auth header
+            httpWebRequest.Headers.Add("Authorization", "Basic " + socialMinerCredentials);
+
+            using (HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                using (XmlReader xReader = XmlReader.Create(new StringReader(reader.ReadToEnd())))
+                {
+                    xReader.MoveToContent();
+                    Console.WriteLine(xReader.Value);
+                    return Convert.ToInt32(xReader.ReadElementContentAsString());
+                }
+            }
+        }
     }
+    
 }

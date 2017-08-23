@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.output = new System.Windows.Forms.TextBox();
+            this.outputStatic = new System.Windows.Forms.TextBox();
             this.getTranscriptButton = new System.Windows.Forms.Button();
             this.socialContactIdTextBox = new System.Windows.Forms.TextBox();
             this.agentNameTextBox = new System.Windows.Forms.TextBox();
@@ -43,18 +43,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.transcriptOutput = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // output
+            // outputStatic
             // 
-            this.output.Dock = System.Windows.Forms.DockStyle.Top;
-            this.output.Location = new System.Drawing.Point(0, 0);
-            this.output.Multiline = true;
-            this.output.Name = "output";
-            this.output.ReadOnly = true;
-            this.output.Size = new System.Drawing.Size(800, 327);
-            this.output.TabIndex = 0;
-            this.output.TextChanged += new System.EventHandler(this.output_TextChanged);
+            this.outputStatic.Dock = System.Windows.Forms.DockStyle.Top;
+            this.outputStatic.Location = new System.Drawing.Point(0, 0);
+            this.outputStatic.Multiline = true;
+            this.outputStatic.Name = "outputStatic";
+            this.outputStatic.ReadOnly = true;
+            this.outputStatic.Size = new System.Drawing.Size(800, 59);
+            this.outputStatic.TabIndex = 0;
+            this.outputStatic.TextChanged += new System.EventHandler(this.output_TextChanged);
             // 
             // getTranscriptButton
             // 
@@ -69,7 +71,7 @@
             // socialContactIdTextBox
             // 
             this.socialContactIdTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.socialContactIdTextBox.Location = new System.Drawing.Point(12, 494);
+            this.socialContactIdTextBox.Location = new System.Drawing.Point(0, 494);
             this.socialContactIdTextBox.Name = "socialContactIdTextBox";
             this.socialContactIdTextBox.Size = new System.Drawing.Size(662, 20);
             this.socialContactIdTextBox.TabIndex = 2;
@@ -178,11 +180,33 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Status";
             // 
+            // transcriptOutput
+            // 
+            this.transcriptOutput.Location = new System.Drawing.Point(0, 352);
+            this.transcriptOutput.Multiline = true;
+            this.transcriptOutput.Name = "transcriptOutput";
+            this.transcriptOutput.ReadOnly = true;
+            this.transcriptOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.transcriptOutput.Size = new System.Drawing.Size(580, 127);
+            this.transcriptOutput.TabIndex = 17;
+            this.transcriptOutput.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(-3, 336);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Transcript";
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 529);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.transcriptOutput);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -197,7 +221,7 @@
             this.Controls.Add(this.agentNameTextBox);
             this.Controls.Add(this.socialContactIdTextBox);
             this.Controls.Add(this.getTranscriptButton);
-            this.Controls.Add(this.output);
+            this.Controls.Add(this.outputStatic);
             this.Name = "mainWindow";
             this.Text = "mainWindow";
             this.Load += new System.EventHandler(this.mainWindow_Load);
@@ -208,7 +232,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox output;
+        private System.Windows.Forms.TextBox outputStatic;
         private System.Windows.Forms.Button getTranscriptButton;
         private System.Windows.Forms.TextBox socialContactIdTextBox;
         private System.Windows.Forms.TextBox agentNameTextBox;
@@ -223,5 +247,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox transcriptOutput;
+        private System.Windows.Forms.Label label7;
     }
 }
