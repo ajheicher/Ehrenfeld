@@ -33,7 +33,9 @@ namespace SocialMinerTestFormsApp
 
             Campaign chat = new Campaign(smCredentials, "http://10.171.1.100/ccp-webapp/ccp/campaign/CCX_Chat_Campaign/");
 
-            mainWindow main = new mainWindow(chat.output.ToString(), smCredentials);
+            this.Hide();
+            mainWindow main = new mainWindow(chat.output.ToString(), smCredentials, chat);
+           
             main.Show();
         }
 

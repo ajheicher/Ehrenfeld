@@ -38,8 +38,14 @@ namespace SocialMinerTestFormsApp
 
             refURL = "http://10.171.1.100/ccp-webapp/ccp/socialcontact/" + scID;
 
-            createTranscriptLL();
+            //createTranscriptLL();
             returnBaseData();
+        }
+
+        public override string ToString()
+        {
+            //returnBaseData();
+            return solicitor + " - " + publishedDate.ToString();
         }
 
         public void returnBaseData()
@@ -224,6 +230,18 @@ namespace SocialMinerTestFormsApp
 
                     
                 }
+            }
+        }
+
+        public bool isQAAble()
+        {
+            if (transcript.Count > 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
