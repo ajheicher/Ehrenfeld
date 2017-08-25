@@ -15,6 +15,7 @@ namespace SocialMinerTestFormsApp
         public SocialContact sc;
         public Campaign c;
         public string socialMinerCredentials;
+        bool appStarted = true;
         public mainWindow(string html, string sm, Campaign campaign)
         {
             InitializeComponent();
@@ -73,6 +74,16 @@ namespace SocialMinerTestFormsApp
 
         }
 
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                transcriptOutput.SelectAll();
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+
+
         private void searchButton_Click(object sender, EventArgs e)
         {
             Results.Items.Clear();
@@ -113,6 +124,22 @@ namespace SocialMinerTestFormsApp
                 qaAbleTextBox.Text = "No";
             }
 
+        }
+
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rawSearchQuery_Enter(object sender, EventArgs e)
+        {
+            
+
+            if (appStarted)
+            {
+                appStarted = false;
+                rawSearchQuery.Clear();
+            }
         }
     }
 }

@@ -46,12 +46,13 @@
             this.transcriptOutput = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Results = new System.Windows.Forms.ListBox();
-            this.startDate = new System.Windows.Forms.DateTimePicker();
-            this.endDate = new System.Windows.Forms.DateTimePicker();
             this.searchButton = new System.Windows.Forms.Button();
+            this.endDate = new System.Windows.Forms.DateTimePicker();
+            this.startDate = new System.Windows.Forms.DateTimePicker();
+            this.Results = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
             this.qaAbleTextBox = new System.Windows.Forms.TextBox();
+            this.rawSearchQuery = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,19 +191,20 @@
             // 
             // transcriptOutput
             // 
-            this.transcriptOutput.Location = new System.Drawing.Point(0, 131);
+            this.transcriptOutput.Location = new System.Drawing.Point(0, 193);
             this.transcriptOutput.Multiline = true;
             this.transcriptOutput.Name = "transcriptOutput";
             this.transcriptOutput.ReadOnly = true;
             this.transcriptOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.transcriptOutput.Size = new System.Drawing.Size(580, 326);
+            this.transcriptOutput.Size = new System.Drawing.Size(580, 264);
             this.transcriptOutput.TabIndex = 17;
             this.transcriptOutput.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            this.transcriptOutput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 115);
+            this.label7.Location = new System.Drawing.Point(3, 175);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 18;
@@ -210,38 +212,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rawSearchQuery);
             this.groupBox1.Controls.Add(this.searchButton);
             this.groupBox1.Controls.Add(this.endDate);
             this.groupBox1.Controls.Add(this.startDate);
             this.groupBox1.Location = new System.Drawing.Point(0, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(580, 47);
+            this.groupBox1.Size = new System.Drawing.Size(580, 107);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
-            // 
-            // Results
-            // 
-            this.Results.FormattingEnabled = true;
-            this.Results.Location = new System.Drawing.Point(586, 65);
-            this.Results.Name = "Results";
-            this.Results.Size = new System.Drawing.Size(214, 251);
-            this.Results.TabIndex = 20;
-            this.Results.SelectedIndexChanged += new System.EventHandler(this.Results_SelectedIndexChanged);
-            // 
-            // startDate
-            // 
-            this.startDate.Location = new System.Drawing.Point(6, 19);
-            this.startDate.Name = "startDate";
-            this.startDate.Size = new System.Drawing.Size(200, 20);
-            this.startDate.TabIndex = 0;
-            // 
-            // endDate
-            // 
-            this.endDate.Location = new System.Drawing.Point(212, 19);
-            this.endDate.Name = "endDate";
-            this.endDate.Size = new System.Drawing.Size(200, 20);
-            this.endDate.TabIndex = 1;
             // 
             // searchButton
             // 
@@ -252,6 +232,29 @@
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // endDate
+            // 
+            this.endDate.Location = new System.Drawing.Point(212, 19);
+            this.endDate.Name = "endDate";
+            this.endDate.Size = new System.Drawing.Size(200, 20);
+            this.endDate.TabIndex = 1;
+            // 
+            // startDate
+            // 
+            this.startDate.Location = new System.Drawing.Point(6, 19);
+            this.startDate.Name = "startDate";
+            this.startDate.Size = new System.Drawing.Size(200, 20);
+            this.startDate.TabIndex = 0;
+            // 
+            // Results
+            // 
+            this.Results.FormattingEnabled = true;
+            this.Results.Location = new System.Drawing.Point(586, 65);
+            this.Results.Name = "Results";
+            this.Results.Size = new System.Drawing.Size(214, 251);
+            this.Results.TabIndex = 20;
+            this.Results.SelectedIndexChanged += new System.EventHandler(this.Results_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -269,6 +272,16 @@
             this.qaAbleTextBox.ReadOnly = true;
             this.qaAbleTextBox.Size = new System.Drawing.Size(100, 20);
             this.qaAbleTextBox.TabIndex = 22;
+            // 
+            // rawSearchQuery
+            // 
+            this.rawSearchQuery.Location = new System.Drawing.Point(6, 45);
+            this.rawSearchQuery.Name = "rawSearchQuery";
+            this.rawSearchQuery.Size = new System.Drawing.Size(406, 20);
+            this.rawSearchQuery.TabIndex = 23;
+            this.rawSearchQuery.Text = "Raw Query";
+            this.rawSearchQuery.TextChanged += new System.EventHandler(this.textBox1_TextChanged_2);
+            this.rawSearchQuery.Enter += new System.EventHandler(this.rawSearchQuery_Enter);
             // 
             // mainWindow
             // 
@@ -300,6 +313,7 @@
             this.Text = "mainWindow";
             this.Load += new System.EventHandler(this.mainWindow_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,5 +345,6 @@
         private System.Windows.Forms.ListBox Results;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox qaAbleTextBox;
+        private System.Windows.Forms.TextBox rawSearchQuery;
     }
 }
