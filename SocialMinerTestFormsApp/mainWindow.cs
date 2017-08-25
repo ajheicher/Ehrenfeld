@@ -141,5 +141,40 @@ namespace SocialMinerTestFormsApp
                 rawSearchQuery.Clear();
             }
         }
+
+        private void prevResult_Click(object sender, EventArgs e)
+        {
+            if (Results.SelectedIndex > 0)
+            {
+                Results.SelectedIndex -= 1;
+            }
+            else
+            {
+                Results.SelectedIndex = Results.Items.Count - 1;
+            }
+        }
+
+        private void nextResult_Click(object sender, EventArgs e)
+        {
+            if (Results.SelectedIndex > -1 && Results.SelectedIndex != Results.Items.Count-1)
+            {
+                Results.SelectedIndex += 1;
+            }
+          
+            else
+            {
+                Results.SelectedIndex = 0;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

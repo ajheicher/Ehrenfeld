@@ -53,17 +53,21 @@
             this.label8 = new System.Windows.Forms.Label();
             this.qaAbleTextBox = new System.Windows.Forms.TextBox();
             this.rawSearchQuery = new System.Windows.Forms.TextBox();
+            this.prevResult = new System.Windows.Forms.Button();
+            this.nextResult = new System.Windows.Forms.Button();
+            this.includeQAedChats = new System.Windows.Forms.CheckBox();
+            this.includeNonQAableChats = new System.Windows.Forms.CheckBox();
+            this.agentSelectBox = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // outputStatic
             // 
-            this.outputStatic.Dock = System.Windows.Forms.DockStyle.Top;
             this.outputStatic.Location = new System.Drawing.Point(0, 0);
             this.outputStatic.Multiline = true;
             this.outputStatic.Name = "outputStatic";
             this.outputStatic.ReadOnly = true;
-            this.outputStatic.Size = new System.Drawing.Size(800, 59);
+            this.outputStatic.Size = new System.Drawing.Size(580, 59);
             this.outputStatic.TabIndex = 0;
             this.outputStatic.TextChanged += new System.EventHandler(this.output_TextChanged);
             // 
@@ -212,13 +216,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.agentSelectBox);
+            this.groupBox1.Controls.Add(this.includeNonQAableChats);
+            this.groupBox1.Controls.Add(this.includeQAedChats);
             this.groupBox1.Controls.Add(this.rawSearchQuery);
             this.groupBox1.Controls.Add(this.searchButton);
             this.groupBox1.Controls.Add(this.endDate);
             this.groupBox1.Controls.Add(this.startDate);
             this.groupBox1.Location = new System.Drawing.Point(0, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(580, 107);
+            this.groupBox1.Size = new System.Drawing.Size(580, 96);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -250,9 +257,9 @@
             // Results
             // 
             this.Results.FormattingEnabled = true;
-            this.Results.Location = new System.Drawing.Point(586, 65);
+            this.Results.Location = new System.Drawing.Point(586, 0);
             this.Results.Name = "Results";
-            this.Results.Size = new System.Drawing.Size(214, 251);
+            this.Results.Size = new System.Drawing.Size(214, 290);
             this.Results.TabIndex = 20;
             this.Results.SelectedIndexChanged += new System.EventHandler(this.Results_SelectedIndexChanged);
             // 
@@ -275,7 +282,7 @@
             // 
             // rawSearchQuery
             // 
-            this.rawSearchQuery.Location = new System.Drawing.Point(6, 45);
+            this.rawSearchQuery.Location = new System.Drawing.Point(6, 48);
             this.rawSearchQuery.Name = "rawSearchQuery";
             this.rawSearchQuery.Size = new System.Drawing.Size(406, 20);
             this.rawSearchQuery.TabIndex = 23;
@@ -283,11 +290,64 @@
             this.rawSearchQuery.TextChanged += new System.EventHandler(this.textBox1_TextChanged_2);
             this.rawSearchQuery.Enter += new System.EventHandler(this.rawSearchQuery_Enter);
             // 
+            // prevResult
+            // 
+            this.prevResult.Location = new System.Drawing.Point(586, 296);
+            this.prevResult.Name = "prevResult";
+            this.prevResult.Size = new System.Drawing.Size(100, 23);
+            this.prevResult.TabIndex = 23;
+            this.prevResult.Text = "Previous";
+            this.prevResult.UseVisualStyleBackColor = true;
+            this.prevResult.Click += new System.EventHandler(this.prevResult_Click);
+            // 
+            // nextResult
+            // 
+            this.nextResult.Location = new System.Drawing.Point(700, 296);
+            this.nextResult.Name = "nextResult";
+            this.nextResult.Size = new System.Drawing.Size(100, 23);
+            this.nextResult.TabIndex = 24;
+            this.nextResult.Text = "Next";
+            this.nextResult.UseVisualStyleBackColor = true;
+            this.nextResult.Click += new System.EventHandler(this.nextResult_Click);
+            // 
+            // includeQAedChats
+            // 
+            this.includeQAedChats.AutoSize = true;
+            this.includeQAedChats.Location = new System.Drawing.Point(6, 75);
+            this.includeQAedChats.Name = "includeQAedChats";
+            this.includeQAedChats.Size = new System.Drawing.Size(97, 17);
+            this.includeQAedChats.TabIndex = 25;
+            this.includeQAedChats.Text = "Include QAed?";
+            this.includeQAedChats.UseVisualStyleBackColor = true;
+            this.includeQAedChats.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // includeNonQAableChats
+            // 
+            this.includeNonQAableChats.AutoSize = true;
+            this.includeNonQAableChats.Location = new System.Drawing.Point(109, 75);
+            this.includeNonQAableChats.Name = "includeNonQAableChats";
+            this.includeNonQAableChats.Size = new System.Drawing.Size(128, 17);
+            this.includeNonQAableChats.TabIndex = 26;
+            this.includeNonQAableChats.Text = "Include Non-QAable?";
+            this.includeNonQAableChats.UseVisualStyleBackColor = true;
+            this.includeNonQAableChats.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            // 
+            // agentSelectBox
+            // 
+            this.agentSelectBox.FormattingEnabled = true;
+            this.agentSelectBox.Location = new System.Drawing.Point(418, 47);
+            this.agentSelectBox.Name = "agentSelectBox";
+            this.agentSelectBox.Size = new System.Drawing.Size(156, 21);
+            this.agentSelectBox.TabIndex = 27;
+            this.agentSelectBox.Text = "Agent";
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 529);
+            this.Controls.Add(this.nextResult);
+            this.Controls.Add(this.prevResult);
             this.Controls.Add(this.qaAbleTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.Results);
@@ -346,5 +406,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox qaAbleTextBox;
         private System.Windows.Forms.TextBox rawSearchQuery;
+        private System.Windows.Forms.Button prevResult;
+        private System.Windows.Forms.Button nextResult;
+        private System.Windows.Forms.CheckBox includeQAedChats;
+        private System.Windows.Forms.CheckBox includeNonQAableChats;
+        private System.Windows.Forms.ComboBox agentSelectBox;
     }
 }
