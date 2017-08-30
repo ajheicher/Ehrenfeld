@@ -176,17 +176,29 @@ namespace SocialMinerTestFormsApp
                 }
             }
         
-
+        /// <summary>
+        /// Builds the transcript by making an API request to the SocialMiner server 
+        /// and splitting the result into individual transcript entries
+        /// These entries are added to a linkedlist in social contact and hold the transcript data
+        /// TODO: This is so bad, make it better by
+        /// TODO: Make the XML parsing more explicit
+        /// TODO: Standardize the refURL
+        /// TODO: Figure out why "No transcript" isn't working
+        /// TODO: Potentially insert reference to nebulous "make request" function to improve code duplicate problems
+        /// </summary>
         public void createTranscriptLL()
         {
+            //API call
             string transcriptRefUrl = refURL + "/transcript";
-            Console.WriteLine(transcriptRefUrl);
+            
+            //Transcript entry component variables
             double tempTimestamp;
             string tempName;
             string tempBody;
-          
-            
+
+            //***************Begin Web Request Block***************\\
             //create WebRequest
+            Console.WriteLine(transcriptRefUrl);
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(transcriptRefUrl);
 
             //Request method
@@ -195,7 +207,7 @@ namespace SocialMinerTestFormsApp
             //Add auth header
             httpWebRequest.Headers.Add("Authorization", "Basic " + socialMinerCredentials);
 
-            //TODO: Exception handling here
+            //TODO: Figure out why a missing transcript returns a 404 instead of the API errors thing
             try
             {
                 using (HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse())
@@ -207,13 +219,17 @@ namespace SocialMinerTestFormsApp
                 }
             }
             catch (WebException ex)
-            {
-                //do nothing
-            }
-           
-
-            
+            { 
+               
+                Console.WriteLine("404!");
+                transcript.AddLast(new TranscriptEntry(0, "No Name", "No Transcript"));
+                return;
                 
+            }
+
+            //***************End Web Request Block***************\\
+
+
             using (XmlReader reader = XmlReader.Create(new StringReader(raw)))
             {
                 //TODO: make this better
@@ -260,16 +276,16 @@ namespace SocialMinerTestFormsApp
             }
         }
 
+        /// <summary>
+        /// Method to check if a chat is QAAble
+        /// QAAble is defined as a chat that can be applied to an agent's QA score
+        /// Such chats include a transcript and an actual exchange between the guest and the agent
+        /// Programmatically, this is defined as having more than two transcript entries
+        /// </summary>
+        /// <returns></returns>
         public bool isQAAble()
         {
-            if (transcript.Count > 2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (transcript.Count > 2);
         }
     }
 }

@@ -157,7 +157,7 @@ namespace SocialMinerTestFormsApp
                     {
                         if (xReader.Name == "entry")
                         {
-                            Console.WriteLine("Found Entry " + tempEntry);
+                            //Console.WriteLine("Found Entry " + tempEntry);
                             tempEntry += 1;
                             
                             XmlReader inner = xReader.ReadSubtree();
@@ -173,7 +173,7 @@ namespace SocialMinerTestFormsApp
                                         if (subInner.Name == "id")
                                         {
                                             element = XNode.ReadFrom(subInner) as XElement;
-                                            Console.WriteLine("Added Result " + temp);
+                                           // Console.WriteLine("Added Result " + temp);
                                             returnSet.Add(new SocialContact(socialMinerCredentials, element.Value));
                                             temp += 1;
                                             break;
@@ -188,14 +188,14 @@ namespace SocialMinerTestFormsApp
                                     int pos = element.Value.LastIndexOf("/") + 1;
                                     Console.WriteLine(element.Value.Substring(pos, element.Value.Length - pos));
 
-                                    if (inner.ReadToFollowing("content"))
-                                    {
+                                   // if (inner.ReadToFollowing("content"))
+                                   // {
                                         returnSet.Add(new SocialContact(socialMinerCredentials, element.Value.Substring(pos, element.Value.Length - pos)));
-                                    }
-                                    else
-                                    {
-                                        returnSet.Add(new SocialContact(socialMinerCredentials, element.Value.Substring(pos, element.Value.Length - pos), true));
-                                    }
+                                   // }
+                                    //else
+                                    //{
+                                   //     returnSet.Add(new SocialContact(socialMinerCredentials, element.Value.Substring(pos, element.Value.Length - pos), true));
+                                   // }
                                     
                                     break;
                                 }
@@ -247,7 +247,7 @@ namespace SocialMinerTestFormsApp
                         {
                             if (xReader.Name == "entry")
                             {
-                                Console.WriteLine("Found Entry " + tempEntry);
+                                //Console.WriteLine("Found Entry " + tempEntry);
                                 tempEntry += 1;
 
                                 XmlReader inner = xReader.ReadSubtree();
@@ -263,7 +263,7 @@ namespace SocialMinerTestFormsApp
                                             if (subInner.Name == "id")
                                             {
                                                 element = XNode.ReadFrom(subInner) as XElement;
-                                                Console.WriteLine("Added Result " + temp);
+                                                //Console.WriteLine("Added Result " + temp);
                                                 returnSet.Add(new SocialContact(socialMinerCredentials, element.Value));
                                                 temp += 1;
                                                 break;
@@ -276,7 +276,7 @@ namespace SocialMinerTestFormsApp
                                     {
                                         element = XNode.ReadFrom(inner) as XElement;
                                         int pos = element.Value.LastIndexOf("/") + 1;
-                                        Console.WriteLine(element.Value.Substring(pos, element.Value.Length - pos));
+                                        //Console.WriteLine(element.Value.Substring(pos, element.Value.Length - pos));
 
                                         if (inner.ReadToFollowing("content"))
                                         {
