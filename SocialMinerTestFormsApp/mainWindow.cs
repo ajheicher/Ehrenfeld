@@ -52,10 +52,7 @@ namespace SocialMinerTestFormsApp
             {
                 transcriptOutput.AppendText(n.toString());
                 transcriptOutput.AppendText(Environment.NewLine);
-
-               
-
-                
+ 
             }
         }
 
@@ -89,18 +86,29 @@ namespace SocialMinerTestFormsApp
             Results.Items.Clear();
             List<SocialContact> searchResults = new List<SocialContact>();
             searchResults = c.newSearch(c.newSearchStringByDate(startDate.Value, endDate.Value));
+            int totalQAAble = 0;
+            int resultCount = 0;
             
             foreach (SocialContact s in searchResults)
             {
                 Results.Items.Add(s);
+                resultCount += 1;
+
+                if(s.isQAAble())
+                {
+                    totalQAAble += 1;
+                }
             }
+
+            totalQAAbleTextBox.Text = totalQAAble.ToString();
+            totalResultsTextBox.Text = resultCount.ToString();
         }
 
         private void Results_SelectedIndexChanged(object sender, EventArgs e)
         {
             SocialContact s = Results.SelectedItem as SocialContact;
             transcriptOutput.Text = "";
-            s.createTranscriptLL();
+            //s.createTranscriptLL();
             agentNameTextBox.Text = s.solicitor;
             guestNameTextBox.Text = s.ccxName;
             guestEmailTextBox.Text = s.ccxEmail;

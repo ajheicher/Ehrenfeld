@@ -38,6 +38,19 @@ namespace SocialMinerTestFormsApp
 
             refURL = "http://10.171.1.100/ccp-webapp/ccp/socialcontact/" + scID;
 
+            createTranscriptLL();
+            returnBaseData();
+        }
+
+        public SocialContact(string sm, string id, bool noTranscript)
+        {
+            socialMinerCredentials = sm;
+            scID = id;
+            //timezone problems?
+            publishedDate = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+
+            refURL = "http://10.171.1.100/ccp-webapp/ccp/socialcontact/" + scID;
+
             //createTranscriptLL();
             returnBaseData();
         }
@@ -111,7 +124,7 @@ namespace SocialMinerTestFormsApp
                                             if (elementString == "Email")
                                             {
                                                 subInner.Read();
-                                                Console.WriteLine(subInner.Value);
+                                                //Console.WriteLine(subInner.Value);
                                                // XElement tempElement = XNode.ReadFrom(subInner) as XElement;
                                                 ccxEmail = subInner.Value;
                                             }
@@ -150,7 +163,7 @@ namespace SocialMinerTestFormsApp
                         
                         if (reader.Name == "status")
                         {
-                            Console.WriteLine(reader.Name);
+                            //Console.WriteLine(reader.Name);
                             status = (scSocialContactStatus)3;
                         }
                     }
@@ -167,6 +180,7 @@ namespace SocialMinerTestFormsApp
         public void createTranscriptLL()
         {
             string transcriptRefUrl = refURL + "/transcript";
+            Console.WriteLine(transcriptRefUrl);
             double tempTimestamp;
             string tempName;
             string tempBody;
@@ -182,18 +196,27 @@ namespace SocialMinerTestFormsApp
             httpWebRequest.Headers.Add("Authorization", "Basic " + socialMinerCredentials);
 
             //TODO: Exception handling here
-            using (HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                raw = reader.ReadToEnd();
-       
+                using (HttpWebResponse response = (HttpWebResponse)httpWebRequest.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    raw = reader.ReadToEnd();
+
+                }
             }
+            catch (WebException ex)
+            {
+                //do nothing
+            }
+           
 
             
                 
             using (XmlReader reader = XmlReader.Create(new StringReader(raw)))
             {
+                //TODO: make this better
                 while (true)
                 {
                     if (reader.ReadToFollowing("chat"))
@@ -202,16 +225,16 @@ namespace SocialMinerTestFormsApp
 
                         inner.ReadToDescendant("time");
                         tempTimestamp = inner.ReadElementContentAsDouble();
-                        Console.WriteLine(tempTimestamp);
+                        //Console.WriteLine(tempTimestamp);
                         
                         //reader.Read();
                         
                         tempName = inner.ReadElementContentAsString();
-                        Console.WriteLine(tempName);
+                        //Console.WriteLine(tempName);
 
                         //reader.Read();
                         tempBody = inner.ReadElementContentAsString();
-                        Console.WriteLine(tempBody);
+                        //Console.WriteLine(tempBody);
 
                         if (transcript.Last == null)
                         {
@@ -222,6 +245,10 @@ namespace SocialMinerTestFormsApp
                             transcript.AddAfter(transcript.Last, new TranscriptEntry(tempTimestamp, tempName, tempBody));
                         }
                         inner.Close();
+                    }
+                    else if (reader.ReadToFollowing("apiErrors"))
+                    {
+                        transcript.AddLast(new TranscriptEntry(0, "No Name", "No Transcript"));
                     }
                     else
                     {
