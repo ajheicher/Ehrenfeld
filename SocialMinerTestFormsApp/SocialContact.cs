@@ -229,6 +229,7 @@ namespace SocialMinerTestFormsApp
 
             //***************End Web Request Block***************\\
 
+            //***************Begin XML Parsing Block*************\\
 
             using (XmlReader reader = XmlReader.Create(new StringReader(raw)))
             {
@@ -274,6 +275,12 @@ namespace SocialMinerTestFormsApp
                     
                 }
             }
+            //***************End XML Parsing Block***************\\
+
+            //Begin test block
+            //XDocument xDoc = XDocument.Load(raw);
+
+
         }
 
         /// <summary>

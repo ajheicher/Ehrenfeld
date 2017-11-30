@@ -46,6 +46,10 @@
             this.transcriptOutput = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.totalResultsTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.totalQAAbleTextBox = new System.Windows.Forms.TextBox();
             this.agentSelectBox = new System.Windows.Forms.ComboBox();
             this.includeNonQAableChats = new System.Windows.Forms.CheckBox();
             this.includeQAedChats = new System.Windows.Forms.CheckBox();
@@ -58,10 +62,7 @@
             this.qaAbleTextBox = new System.Windows.Forms.TextBox();
             this.prevResult = new System.Windows.Forms.Button();
             this.nextResult = new System.Windows.Forms.Button();
-            this.totalQAAbleTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.totalResultsTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.generateWordCloudButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -238,6 +239,40 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(292, 75);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Total Results:";
+            // 
+            // totalResultsTextBox
+            // 
+            this.totalResultsTextBox.Location = new System.Drawing.Point(370, 72);
+            this.totalResultsTextBox.Name = "totalResultsTextBox";
+            this.totalResultsTextBox.ReadOnly = true;
+            this.totalResultsTextBox.Size = new System.Drawing.Size(42, 20);
+            this.totalResultsTextBox.TabIndex = 30;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(415, 75);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(111, 13);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Total Results QAAble:\r\n";
+            // 
+            // totalQAAbleTextBox
+            // 
+            this.totalQAAbleTextBox.Location = new System.Drawing.Point(532, 72);
+            this.totalQAAbleTextBox.Name = "totalQAAbleTextBox";
+            this.totalQAAbleTextBox.ReadOnly = true;
+            this.totalQAAbleTextBox.Size = new System.Drawing.Size(42, 20);
+            this.totalQAAbleTextBox.TabIndex = 28;
+            // 
             // agentSelectBox
             // 
             this.agentSelectBox.FormattingEnabled = true;
@@ -331,9 +366,9 @@
             // 
             // prevResult
             // 
-            this.prevResult.Location = new System.Drawing.Point(586, 296);
+            this.prevResult.Location = new System.Drawing.Point(680, 296);
             this.prevResult.Name = "prevResult";
-            this.prevResult.Size = new System.Drawing.Size(100, 23);
+            this.prevResult.Size = new System.Drawing.Size(59, 23);
             this.prevResult.TabIndex = 23;
             this.prevResult.Text = "Previous";
             this.prevResult.UseVisualStyleBackColor = true;
@@ -341,53 +376,30 @@
             // 
             // nextResult
             // 
-            this.nextResult.Location = new System.Drawing.Point(700, 296);
+            this.nextResult.Location = new System.Drawing.Point(745, 296);
             this.nextResult.Name = "nextResult";
-            this.nextResult.Size = new System.Drawing.Size(100, 23);
+            this.nextResult.Size = new System.Drawing.Size(55, 23);
             this.nextResult.TabIndex = 24;
             this.nextResult.Text = "Next";
             this.nextResult.UseVisualStyleBackColor = true;
             this.nextResult.Click += new System.EventHandler(this.nextResult_Click);
             // 
-            // totalQAAbleTextBox
+            // generateWordCloudButton
             // 
-            this.totalQAAbleTextBox.Location = new System.Drawing.Point(532, 72);
-            this.totalQAAbleTextBox.Name = "totalQAAbleTextBox";
-            this.totalQAAbleTextBox.ReadOnly = true;
-            this.totalQAAbleTextBox.Size = new System.Drawing.Size(42, 20);
-            this.totalQAAbleTextBox.TabIndex = 28;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(415, 75);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(111, 13);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Total Results QAAble:\r\n";
-            // 
-            // totalResultsTextBox
-            // 
-            this.totalResultsTextBox.Location = new System.Drawing.Point(370, 72);
-            this.totalResultsTextBox.Name = "totalResultsTextBox";
-            this.totalResultsTextBox.ReadOnly = true;
-            this.totalResultsTextBox.Size = new System.Drawing.Size(42, 20);
-            this.totalResultsTextBox.TabIndex = 30;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(292, 75);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 13);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Total Results:";
+            this.generateWordCloudButton.Location = new System.Drawing.Point(586, 296);
+            this.generateWordCloudButton.Name = "generateWordCloudButton";
+            this.generateWordCloudButton.Size = new System.Drawing.Size(88, 23);
+            this.generateWordCloudButton.TabIndex = 25;
+            this.generateWordCloudButton.Text = "Word Cloud";
+            this.generateWordCloudButton.UseVisualStyleBackColor = true;
+            this.generateWordCloudButton.Click += new System.EventHandler(this.generateWordCloudButton_Click);
             // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 529);
+            this.Controls.Add(this.generateWordCloudButton);
             this.Controls.Add(this.nextResult);
             this.Controls.Add(this.prevResult);
             this.Controls.Add(this.qaAbleTextBox);
@@ -457,5 +469,6 @@
         private System.Windows.Forms.TextBox totalQAAbleTextBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox totalResultsTextBox;
+        private System.Windows.Forms.Button generateWordCloudButton;
     }
 }

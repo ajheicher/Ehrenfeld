@@ -184,5 +184,10 @@ namespace SocialMinerTestFormsApp
         {
 
         }
+
+        private void generateWordCloudButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -40,8 +40,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.78261F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.21739F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.83038F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.16962F));
             this.tableLayoutPanel1.Controls.Add(this.passwordLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.signIn, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.username, 1, 0);
@@ -54,8 +54,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.71F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.71F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.58F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(257, 113);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(254, 113);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // passwordLabel
@@ -64,7 +63,7 @@
             this.passwordLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.passwordLabel.Location = new System.Drawing.Point(3, 40);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(109, 40);
+            this.passwordLabel.Size = new System.Drawing.Size(74, 40);
             this.passwordLabel.TabIndex = 4;
             this.passwordLabel.Text = "Password:";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -75,7 +74,7 @@
             this.signIn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.signIn.Location = new System.Drawing.Point(3, 83);
             this.signIn.Name = "signIn";
-            this.signIn.Size = new System.Drawing.Size(251, 27);
+            this.signIn.Size = new System.Drawing.Size(248, 27);
             this.signIn.TabIndex = 0;
             this.signIn.Text = "Sign In";
             this.signIn.UseVisualStyleBackColor = true;
@@ -84,7 +83,7 @@
             // username
             // 
             this.username.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.username.Location = new System.Drawing.Point(122, 10);
+            this.username.Location = new System.Drawing.Point(103, 10);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(127, 20);
             this.username.TabIndex = 1;
@@ -93,7 +92,7 @@
             // password
             // 
             this.password.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.password.Location = new System.Drawing.Point(122, 50);
+            this.password.Location = new System.Drawing.Point(103, 50);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(127, 20);
@@ -106,7 +105,7 @@
             this.usernameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.usernameLabel.Location = new System.Drawing.Point(3, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(109, 40);
+            this.usernameLabel.Size = new System.Drawing.Size(74, 40);
             this.usernameLabel.TabIndex = 3;
             this.usernameLabel.Text = "Username:";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -115,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 113);
+            this.ClientSize = new System.Drawing.Size(254, 113);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "loginForm";
             this.Text = "SocialMiner Log In";

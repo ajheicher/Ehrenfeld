@@ -186,7 +186,7 @@ namespace SocialMinerTestFormsApp
                                 {
                                     element = XNode.ReadFrom(inner) as XElement;
                                     int pos = element.Value.LastIndexOf("/") + 1;
-                                    Console.WriteLine(element.Value.Substring(pos, element.Value.Length - pos));
+                                    //Console.WriteLine(element.Value.Substring(pos, element.Value.Length - pos));
 
                                    // if (inner.ReadToFollowing("content"))
                                    // {
