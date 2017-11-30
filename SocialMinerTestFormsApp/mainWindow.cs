@@ -16,6 +16,8 @@ namespace SocialMinerTestFormsApp
         public Campaign c;
         public string socialMinerCredentials;
         bool appStarted = true;
+        List<SocialContact> searchResults = new List<SocialContact>();
+
         public mainWindow(string html, string sm, Campaign campaign)
         {
             InitializeComponent();
@@ -84,7 +86,7 @@ namespace SocialMinerTestFormsApp
         private void searchButton_Click(object sender, EventArgs e)
         {
             Results.Items.Clear();
-            List<SocialContact> searchResults = new List<SocialContact>();
+            
             searchResults = c.newSearch(c.newSearchStringByDate(startDate.Value, endDate.Value));
             int totalQAAble = 0;
             int resultCount = 0;
@@ -187,7 +189,22 @@ namespace SocialMinerTestFormsApp
 
         private void generateWordCloudButton_Click(object sender, EventArgs e)
         {
+            List<string> cloudSeed = new List<string>();
+            foreach (SocialContact c in searchResults)
+            {
+                foreach (TranscriptEntry t in c.transcript)
+                {
+                    cloudSeed.Add(t.entryBody);
+                }
+            }
 
+            Wordcloud cloud = new Wordcloud();
+
+
+            Console.Write(string.Join(
+                Environment.NewLine,
+                cloud.createWordCloud(cloudSeed).Select(p => "[" + p.Count + "] \t" + p.Text).ToArray()));
         }
     }
 }
+

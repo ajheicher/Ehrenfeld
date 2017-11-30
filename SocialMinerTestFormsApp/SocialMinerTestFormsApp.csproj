@@ -32,6 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LemmaSharp">
+      <HintPath>..\..\..\..\..\Desktop\LemmaGen_v3.0_Base_dll\LemmaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LemmaSharpPrebuilt">
+      <HintPath>..\..\..\..\..\Desktop\LemmaGen_v3.0_PrebuiltCompact_dll\LemmaSharpPrebuilt.dll</HintPath>
+    </Reference>
+    <Reference Include="lemmasharpprebuiltcompact">
+      <HintPath>..\..\..\..\..\Desktop\LemmaGen_v3.0_PrebuiltCompact_dll\lemmasharpprebuiltcompact.dll</HintPath>
+    </Reference>
+    <Reference Include="Lzma#">
+      <HintPath>..\..\..\..\..\Desktop\LemmaGen_v3.0_Base_dll\Lzma#.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Campaign.cs" />
+    <Compile Include="CloudWord.cs" />
     <Compile Include="loginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +75,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocialContact.cs" />
     <Compile Include="TranscriptEntry.cs" />
+    <Compile Include="Wordcloud.cs" />
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +90,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -91,6 +106,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stopWords.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
