@@ -198,7 +198,7 @@ namespace SocialMinerTestFormsApp
 
             //***************Begin Web Request Block***************\\
             //create WebRequest
-            Console.WriteLine(transcriptRefUrl);
+            //Console.WriteLine(transcriptRefUrl);
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(transcriptRefUrl);
 
             //Request method
@@ -221,7 +221,7 @@ namespace SocialMinerTestFormsApp
             catch (WebException ex)
             { 
                
-                Console.WriteLine("404!");
+                //Console.WriteLine("404!");
                 transcript.AddLast(new TranscriptEntry(0, "No Name", "No Transcript"));
                 return;
                 

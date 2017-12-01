@@ -37,8 +37,10 @@ namespace SocialMinerTestFormsApp
             var div = Math.Max(1, total / numCategories);
             var index = 0;
 
+            foreach (var word in stopWords) { Console.WriteLine(word); }
+
             return dict.OrderByDescending(p => p.Value)
-                .Where(p => !stopWords.Contains(p.Key))
+                .Where(p => !stopWords.Contains(p.Key.ToLower().Trim()))
                 .Take(maxCloudSize)
                 .Select(p => new CloudWord()
                 {
@@ -46,13 +48,14 @@ namespace SocialMinerTestFormsApp
                     Count = p.Value,
                     Category = (index++) / div
                 });
+                
         }
 
         private void processChatToWords(IEnumerable<string> chats, Dictionary<string,int> dict)
         {
             foreach (var chat in chats)
             {
-                removeChatArtifacts(chat, dict);
+                //removeChatArtifacts(chat, dict);
                 countWords(chat, dict);
             }
         }
@@ -74,16 +77,24 @@ namespace SocialMinerTestFormsApp
 
             foreach (var word in words)
             {
+                var tword = word.ToLower().Trim();
                 int count = 0;
-                dict.TryGetValue(word, out count);
+                dict.TryGetValue(tword, out count);
                 ++count;
-                dict[word] = count;
+                dict[tword] = count;
             }
         }
 
         private static HashSet<string> loadStopWords()
         {
-            var wordList = SocialMinerTestFormsApp.Properties.Resources.stopWords.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            var wordList = SocialMinerTestFormsApp.Properties.Resources.stopWords.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            for (int x = 0; x < wordList.Length; x++) { wordList[x] = wordList[x].Trim(); }
+
+            foreach (string word in wordList)
+            {
+               Console.WriteLine(word);
+                Console.WriteLine("Idiot");
+            }
             return new HashSet<string>(wordList, StringComparer.OrdinalIgnoreCase);
 
         }

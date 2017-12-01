@@ -202,7 +202,7 @@ namespace SocialMinerTestFormsApp
 
 
             Console.Write(string.Join(
-                Environment.NewLine,
+                "\n",
                 cloud.createWordCloud(cloudSeed).Select(p => "[" + p.Count + "] \t" + p.Text).ToArray()));
         }
     }
