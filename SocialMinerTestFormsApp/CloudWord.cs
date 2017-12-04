@@ -13,5 +13,8 @@ namespace SocialMinerTestFormsApp
         public int Category { get; set; }
 
         public int Count { get; set; }
+
     }
+
+   
 }

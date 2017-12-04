@@ -110,11 +110,13 @@ namespace SocialMinerTestFormsApp
         {
             string raw;
             int totalResultsFetched;
-            int totalResults;
+            double totalResults;
             int thisPageResults;
+            double totalProcessedProgressBar = 0;
             int temp = 0;
             int tempEntry = 0;
             int pageIndex = 0;
+            
             List<SocialContact> returnSet = new List<SocialContact>();
             //create WebRequest
 
@@ -151,7 +153,15 @@ namespace SocialMinerTestFormsApp
                 element = XNode.ReadFrom(xReader) as XElement;
                 totalResults = Convert.ToInt32(element.Value);
 
-                while(xReader.Read())
+                Console.WriteLine(totalResults);
+                Console.Write("[");
+                for(int x=1; x<=25; x++)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write("]");
+
+                while (xReader.Read())
                 {
                     if (xReader.NodeType == XmlNodeType.Element)
                     {
@@ -176,6 +186,8 @@ namespace SocialMinerTestFormsApp
                                            // Console.WriteLine("Added Result " + temp);
                                             returnSet.Add(new SocialContact(socialMinerCredentials, element.Value));
                                             temp += 1;
+                                           
+
                                             break;
                                         }
                                     }
@@ -186,11 +198,32 @@ namespace SocialMinerTestFormsApp
                                 {
                                     element = XNode.ReadFrom(inner) as XElement;
                                     int pos = element.Value.LastIndexOf("/") + 1;
+                                    totalProcessedProgressBar += 1;
+
+                                    //TODO: Factor this out into a function instead of duplicating it three times
+                                    Console.Write(totalProcessedProgressBar);
+                                    Console.Write("[");
+                                    double wereHere = Math.Floor(((((totalProcessedProgressBar - 1) / (totalResults - 1)) * 23) + 1));
+                                    for (int x = 1; x <= 24; x++)
+                                    {
+                                        if (x <= wereHere)
+                                        {
+                                            Console.Write("-");
+                                        }
+                                        else
+                                        {
+                                            Console.Write(" ");
+                                        }
+                                    }
+                                    Console.Write("]");
+                                    Console.Write(wereHere);
+                                    Console.WriteLine();
+                                    
                                     //Console.WriteLine(element.Value.Substring(pos, element.Value.Length - pos));
 
-                                   // if (inner.ReadToFollowing("content"))
-                                   // {
-                                        returnSet.Add(new SocialContact(socialMinerCredentials, element.Value.Substring(pos, element.Value.Length - pos)));
+                                    // if (inner.ReadToFollowing("content"))
+                                    // {
+                                    returnSet.Add(new SocialContact(socialMinerCredentials, element.Value.Substring(pos, element.Value.Length - pos)));
                                    // }
                                     //else
                                     //{
@@ -264,6 +297,24 @@ namespace SocialMinerTestFormsApp
                                             {
                                                 element = XNode.ReadFrom(subInner) as XElement;
                                                 //Console.WriteLine("Added Result " + temp);
+                                                totalProcessedProgressBar += 1;
+                                                Console.Write(totalProcessedProgressBar);
+                                                Console.Write("[");
+                                                double wereHere = Math.Floor(((((totalProcessedProgressBar - 1) / (totalResults - 1)) * 23) + 1));
+                                                for (int x = 1; x <= 24; x++)
+                                                {
+                                                    if (x <= wereHere)
+                                                    {
+                                                        Console.Write(x);
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.Write("-");
+                                                    }
+                                                }
+                                                Console.Write("]");
+                                                Console.Write(wereHere);
+                                                Console.WriteLine();
                                                 returnSet.Add(new SocialContact(socialMinerCredentials, element.Value));
                                                 temp += 1;
                                                 break;
@@ -280,10 +331,46 @@ namespace SocialMinerTestFormsApp
 
                                         if (inner.ReadToFollowing("content"))
                                         {
+                                            totalProcessedProgressBar += 1;
+                                            Console.Write(totalProcessedProgressBar);
+                                            Console.Write("[");
+                                            double wereHere = Math.Floor(((((totalProcessedProgressBar - 1) / (totalResults - 1)) * 23) + 1));
+                                            for (int x = 1; x <= 24; x++)
+                                            {
+                                                if (x <= wereHere)
+                                                {
+                                                    Console.Write("-");
+                                                }
+                                                else
+                                                {
+                                                    Console.Write(" ");
+                                                }
+                                            }
+                                            Console.Write("]");
+                                            Console.Write(wereHere);
+                                            Console.WriteLine();
                                             returnSet.Add(new SocialContact(socialMinerCredentials, element.Value.Substring(pos, element.Value.Length - pos)));
                                         }
                                         else
                                         {
+                                            totalProcessedProgressBar += 1;
+                                            Console.Write(totalProcessedProgressBar);
+                                            Console.Write("[");
+                                            double wereHere = Math.Floor(((((totalProcessedProgressBar - 1) / (totalResults - 1)) * 23) + 1));
+                                            for (int x = 1; x <= 24; x++)
+                                            {
+                                                if (x <= wereHere)
+                                                {
+                                                    Console.Write("-");
+                                                }
+                                                else
+                                                {
+                                                    Console.Write(" ");
+                                                }
+                                            }
+                                            Console.Write("]");
+                                            Console.Write(wereHere);
+                                            Console.WriteLine();
                                             returnSet.Add(new SocialContact(socialMinerCredentials, element.Value.Substring(pos, element.Value.Length - pos), true));
                                         }
 

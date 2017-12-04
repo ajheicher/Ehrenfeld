@@ -201,10 +201,17 @@ namespace SocialMinerTestFormsApp
             Wordcloud cloud = new Wordcloud();
 
 
-            Console.Write(string.Join(
+            transcriptOutput.AppendText(string.Join(
                 "\n",
-                cloud.createWordCloud(cloudSeed).Select(p => "[" + p.Count + "] \t" + p.Text).ToArray()));
+                cloud.createWordCloud(cloudSeed).Select(p => p.Count + " " + p.Text).ToArray()));
+
+            
+
         }
+
+       
+
+        
     }
 }
 

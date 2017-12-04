@@ -88,13 +88,8 @@ namespace SocialMinerTestFormsApp
         private static HashSet<string> loadStopWords()
         {
             var wordList = SocialMinerTestFormsApp.Properties.Resources.stopWords.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
-            for (int x = 0; x < wordList.Length; x++) { wordList[x] = wordList[x].Trim(); }
+            //for (int x = 0; x < wordList.Length; x++) { wordList[x] = wordList[x].Trim(); }
 
-            foreach (string word in wordList)
-            {
-               Console.WriteLine(word);
-                Console.WriteLine("Idiot");
-            }
             return new HashSet<string>(wordList, StringComparer.OrdinalIgnoreCase);
 
         }
